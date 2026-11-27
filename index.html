@@ -194,15 +194,19 @@ if(el.closest("[dir=rtl]")){el.classList.add("rv");el.run=()=>el.classList.add("
 const parts=[...el.childNodes].filter(n=>n.nodeType===3).map(n=>{const full=n.textContent,v=document.createTextNode(""),h=document.createElement("span");h.className="untyped";h.textContent=full;n.replaceWith(v,h);return{full,v,h}});
 el.run=()=>{let p=0,i=0;const t=setInterval(()=>{const a=parts[p];if(!a){clearInterval(t);return}i++;a.v.textContent=a.full.slice(0,i);a.h.textContent=a.full.slice(i);if(i>=a.full.length){p++;i=0}},45)};io.observe(el)});
 document.querySelectorAll(".grid .photo, .wide, .count, #deck").forEach(el=>{el.parentNode.classList.add("keep");const w=el;w.run=()=>w.animate([{opacity:0,translate:"0 40px",scale:".9"},{opacity:1,translate:"0 0",scale:"1"}],{duration:900,easing:"ease-out"});io.observe(w)})}
-// original soft waltz, synthesized in the browser
+// Pachelbel's Canon in D (public domain), synthesized softly in the browser
 let ac,next=0,bar=0,on=false;
 const hz=n=>440*Math.pow(2,(n-69)/12);
-const CH=[[48,55,64],[45,52,60],[41,48,57],[43,50,59]];
-const MEL=[[76,79,84],[81,76,72],[77,81,84],[83,79,74],[84,83,79],[76,81,84],[81,77,72],[74,79,83]];
-function note(n,t,len,vol){[[1,1],[2,.25]].forEach(([k,v])=>{const o=ac.createOscillator(),g=ac.createGain();o.type="sine";o.frequency.value=hz(n)*k;
-g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol*v,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+len);o.connect(g).connect(ac.destination);o.start(t);o.stop(t+len)})}
-function plan(){while(next<ac.currentTime+1){const c=CH[bar%4];note(c[0],next,2.4,.12);note(c[1],next+.65,1.6,.06);note(c[2],next+1.3,1.4,.06);
-MEL[bar%8].forEach((n,i)=>note(n,next+i*.65,1.5,.1));next+=1.95;bar++}}
+const CH=[[50,62,66,69],[45,61,64,69],[47,59,62,66],[42,57,61,66],[43,55,59,62],[38,54,57,62],[43,55,59,62],[45,57,61,64]];
+const MEL=[[78],[76],[74],[73],[71],[69],[71],[73],
+[74],[73],[71],[69],[67],[66],[67],[64],
+[74,78],[81,79],[78,74],[78,76],[74,71],[74,81],[79,83],[81,79]];
+function note(n,t,len,vol,att){[[1,1],[2,.18],[3,.05]].forEach(([k,v])=>{const o=ac.createOscillator(),g=ac.createGain();o.type="sine";o.frequency.value=hz(n)*k;
+g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol*v,t+(att||.03));g.gain.exponentialRampToValueAtTime(.0001,t+len);o.connect(g).connect(ac.destination);o.start(t);o.stop(t+len+.05)})}
+function plan(){while(next<ac.currentTime+1){const c=CH[bar%8],m=MEL[bar%MEL.length],B=1.9;
+note(c[0],next,B*1.4,.11,.08);c.slice(1).forEach(n=>note(n,next,B*1.3,.025,.5));
+[c[1],c[2],c[3],c[2]].forEach((n,i)=>note(n,next+i*B/4,1.3,.04));
+m.forEach((n,i)=>note(n,next+i*B/m.length,B/m.length+.9,.1,.05));next+=B;bar++}}
 function music(play){if(!ac){const C=window.AudioContext||window.webkitAudioContext;if(!C)return;ac=new C();next=ac.currentTime+.1;setInterval(()=>{if(on)plan()},300)}
 on=play;if(play){ac.resume();plan()}else ac.suspend();
 $("music").textContent=play?"❚❚ Pause music":"♪ Play music";$("music").setAttribute("aria-pressed",play)}
