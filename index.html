@@ -87,6 +87,8 @@ main{padding-bottom:96px!important}
 .go-map{justify-self:stretch;margin-top:10px;padding:14px 8px;border-radius:99px;background:#a52f40;color:#fffdf8;font:700 15px var(--serif);letter-spacing:.1em;text-transform:uppercase;animation:glow 1.8s ease-out infinite}
 @keyframes glow{0%{box-shadow:0 0 0 0 #a52f4088}100%{box-shadow:0 0 0 14px #a52f4000}}
 @media(prefers-reduced-motion:reduce){.pin,.go-map{animation:none}}
+.cal{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+.cal span{flex-basis:100%;font:15px var(--type)}
 #status{font:14px var(--type);min-height:1.5em;margin:0;text-align:center}
 </style>
 <main>
@@ -116,6 +118,9 @@ main{padding-bottom:96px!important}
 <p class="caps">January</p>
 <div class="date caps"><span>Sunday</span><b>24</b><span>At 5:30 PM</span></div>
 <p class="caps">2027</p>
+<div class="cal"><span>Add to your calendar</span>
+<a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Tony+%26+Evo+Engagement&amp;dates=20270124T153000Z/20270124T183000Z&amp;location=Al+Qasr+Hall%2C+El+Mazallat%2C+Cairo&amp;details=https%3A%2F%2Fmaps.app.goo.gl%2FQ8WTyq1bmzw1ABGS8" target="_blank" rel="noopener">Google Calendar</a>
+<a class="btn alt" href="tony-evo.ics">iPhone Calendar</a></div>
 <div class="count" id="count" aria-label="Countdown"><div><b id="d">–</b><small>days</small></div><div><b id="h">–</b><small>hours</small></div><div><b id="m">–</b><small>mins</small></div><div><b id="s">–</b><small>secs</small></div></div>
 </section>
 <section>
