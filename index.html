@@ -76,6 +76,17 @@ main{padding-bottom:96px!important}
 .rv{opacity:0;transform:translateY(34px)}
 .rv.in{opacity:1;transform:none;transition:opacity .9s,transform .9s}
 @media(prefers-reduced-motion:reduce){#deck figure{transition:none}}
+.venue{display:grid;justify-items:center;gap:8px;margin-top:20px;padding:24px 16px 18px;text-decoration:none;color:var(--ink);border:2px solid var(--gold);outline:1px solid var(--gold);outline-offset:5px;border-radius:140px 140px 18px 18px;background-color:var(--card);background-image:linear-gradient(#d9a62e1f 1px,transparent 1px),linear-gradient(90deg,#d9a62e1f 1px,transparent 1px);background-size:26px 26px;box-shadow:0 12px 26px #4a3b2233;transition:transform .15s}
+.venue:active{transform:scale(.97)}
+.venue:focus-visible{outline:3px solid var(--ink)}
+.pin{width:36px;animation:hop 1.4s ease-in-out infinite}.pin svg{display:block;width:100%}
+@keyframes hop{50%{transform:translateY(-10px)}}
+.venue strong{font:700 30px var(--serif);text-transform:uppercase;letter-spacing:.1em}
+.area{font:15px var(--type);color:var(--soft)}
+.palace{width:min(250px,90%);margin-top:6px}
+.go-map{justify-self:stretch;margin-top:10px;padding:14px 8px;border-radius:99px;background:#a52f40;color:#fffdf8;font:700 15px var(--serif);letter-spacing:.1em;text-transform:uppercase;animation:glow 1.8s ease-out infinite}
+@keyframes glow{0%{box-shadow:0 0 0 0 #a52f4088}100%{box-shadow:0 0 0 14px #a52f4000}}
+@media(prefers-reduced-motion:reduce){.pin,.go-map{animation:none}}
 #status{font:14px var(--type);min-height:1.5em;margin:0;text-align:center}
 </style>
 <main>
@@ -109,8 +120,21 @@ main{padding-bottom:96px!important}
 </section>
 <section>
 <h2>Where</h2>
-<p class="caps">Al Qasr Hall<br>El Mazallat, Cairo</p>
-<a class="btn alt" href="https://maps.app.goo.gl/Q8WTyq1bmzw1ABGS8" target="_blank" rel="noopener">Open in Maps</a>
+<a class="venue" href="https://maps.app.goo.gl/Q8WTyq1bmzw1ABGS8" target="_blank" rel="noopener">
+<span class="pin" aria-hidden="true"><svg viewBox="0 0 24 32"><path d="M12 1a11 11 0 0 1 11 11c0 8-11 19-11 19S1 20 1 12A11 11 0 0 1 12 1z" fill="#a52f40"/><circle cx="12" cy="12" r="4.5" fill="#fffdf8"/></svg></span>
+<strong>Al Qasr Hall</strong>
+<span class="area">El Mazallat, Cairo</span>
+<svg class="palace" viewBox="0 0 240 150" aria-hidden="true">
+<g fill="#fffdf8" stroke="#8a6a2f" stroke-width="2" stroke-linejoin="round">
+<path d="M14 138V66h30v72M196 138V66h30v72"/><path d="M10 66L29 30l19 36zM192 66l19-36 19 36z" fill="#e3c27a"/>
+<path d="M44 138V82h42v56M154 138V82h42v56"/><path d="M44 82v-8h8v8h9v-8h8v8h9v-8h8v8M154 82v-8h8v8h9v-8h8v8h9v-8h8v8" />
+<path d="M86 138V62h68v76"/><path d="M90 62c0-22 18-28 30-40 12 12 30 18 30 40z" fill="#e3c27a"/>
+<path d="M104 138v-26a16 16 0 0 1 32 0v26z" fill="#b8892f"/>
+<path d="M23 98v-12a6 6 0 0 1 12 0v12zM205 98v-12a6 6 0 0 1 12 0v12zM59 112v-10a6 6 0 0 1 12 0v10zM169 112v-10a6 6 0 0 1 12 0v10zM97 88v-9a5 5 0 0 1 10 0v9zM115 88v-9a5 5 0 0 1 10 0v9zM133 88v-9a5 5 0 0 1 10 0v9z" fill="#f2d58f"/>
+<path d="M29 30V14l14 5-14 5M211 30V14l14 5-14 5M120 22V4l15 5-15 5" fill="#c9606f"/>
+</g><path d="M2 139h236" stroke="#8a6a2f" stroke-width="2.5"/></svg>
+<span class="go-map">Tap here to open the map ➜</span>
+</a>
 </section>
 <section class="card">
 <h2>Will you join us?</h2>
