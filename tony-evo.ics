@@ -8,7 +8,7 @@ DTSTART:20270124T153000Z
 DTEND:20270124T183000Z
 SUMMARY:Tony & Evo Engagement
 LOCATION:Al Qasr Hall\, El Mazallat\, Cairo
-DESCRIPTION:https://maps.app.goo.gl/Q8WTyq1bmzw1ABGS8
+DESCRIPTION:https://maps.app.goo.gl/vfQnmyetpM2ng5K78
 BEGIN:VALARM
 TRIGGER:-P1D
 ACTION:DISPLAY
